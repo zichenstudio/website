@@ -4,7 +4,7 @@ let clickCount = 0;
 async function fetchTips() {
   const URL = window.location.origin;
   try {
-    const response = await fetch(`${URL}/script/tipstext.json`);
+    const response = await fetch(`${URL}/script/splash.json`);
     const data = await response.json();
     const randomIndex = Math.floor(Math.random() * data.length);
     const randomTip = data[randomIndex];
@@ -17,7 +17,7 @@ function handleDoubleClick() {
   fetchTips();
   clickCount++;
   if (clickCount === 100) {
-    tipsTextEggElement.innerHTML = '<span style="color:#FF0000">已经100条了，还不够吗？</span>';
+    tipsTextEggElement.innerHTML = '<span style="color:#f00">已经100条了，还不够吗？</span>';
   }
 }
 fetchTips();
