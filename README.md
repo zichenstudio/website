@@ -4,7 +4,7 @@
 
 [![Author](https://img.shields.io/badge/Author-ZiChenStudio-39c5bb.svg?style=flat-square)](https://github.com/zichenstudio)
 [![License](https://img.shields.io/github/license/zichenstudio/zichenstudioweb.svg?style=flat-square)](https://github.com/zichenstudio/zichenstudioweb/blob/master/LICENSE)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c8b96c79-1e96-4899-b5cb-bacd2d108e8a/deploy-status)](https://app.netlify.com/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/84dfd037-6ccc-474a-8fa9-92e4a04b8815/deploy-status)](https://app.netlify.com/projects/zichenstudio/deploys)
 
 
 ## 欢迎
