@@ -1,3 +1,7 @@
+main {
+  padding-bottom: 8rem;
+  display: flow-root;
+}
 main * {
   box-sizing: border-box;
   position: relative;

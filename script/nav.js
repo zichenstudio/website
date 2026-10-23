@@ -1,6 +1,6 @@
 let navItems = [
   {href: '/index.html', title: '首页'},
-  {href: 'https://zichenstudio.github.io/blog/', title: 'Blog'},
+  {href: '/pages/notices/index.html', title: '公告'},
   {href: '/pages/project.html', title: '项目与软件'},
   {href: '/pages/splash.html', title: '闪烁标语'},
   {href: '/pages/contact.html', title: '联系我们'}
