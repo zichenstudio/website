@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>公告</title>
+  <link rel="icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../style/nav.css">
+    <link rel="stylesheet" href="../../style/home.css">
+    <link rel="stylesheet" href="../../style/link.css">
+    <link rel="stylesheet" href="../../style/footer.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/18.1.1/lib/marked.umd.min.js" integrity="sha512-TR+1uszv8n9bFfC+4wouvHv2Na21prfppUEcxR62hf7+e4AZpz1l726rHEk5Zhpg6uJWUJ+LhN+hVqL99YCZqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <nav></nav>
+  <main>
+    <article style="text-align: center;">
+      <h1>公告</h1>
+    </article>
+    <div>
+      <div id="article"></div>
+      <div id="list"></div>
+    </div>
+  </main>
+  <style>
+  #article {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px;
+    line-height: 1.7;
+    color: #222;
+  }
+  </style>
+  <script>
+  const POSTS = [
+    { file: '2023-08-12-remembering_bram_moolenaar.md' }
+  ];
+
+  const file = new URLSearchParams(location.search).get('post');
+  const listEl = document.getElementById('list');
+  const articleEl = document.getElementById('article');
+  if (file) {
+    listEl.remove();
+    fetch(file)
+      .then(r => r.text())
+      .then(text => {
+        articleEl.innerHTML = marked.parse(text);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  } else {
+    Promise.all(POSTS.map(async p => {
+      try {
+        const text = await (await fetch(p.file)).text();
+        const m = text.match(/^#\s+(.+)$/m);
+        p.title = m ? m[1].trim() : p.file;
+      } catch {
+        p.title = p.file;
+      }
+      return p;
+    })).then(() => {
+      POSTS.forEach(p => {
+        const a = document.createElement('a');
+        a.href = '?post=' + encodeURIComponent(p.file);
+        a.textContent = p.title;
+        a.style.display = 'block';
+        listEl.appendChild(a);
+      });
+    });
+  }
+  </script>
+  <div class="up"></div>
+  <footer></footer>
+  <script src="../../script/nav.js"></script>
+  <script src="../../script/up.js"></script>
+  <script src="../../script/footer.js"></script>
+  <script src="../../script/hitokoto.js"></script>
+</body>
+</html>
